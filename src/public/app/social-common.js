@@ -7,7 +7,7 @@ $(()=>{
 
 function loginIfNeeded(){
 
-    let currentUser = window.localStorage.user ? JSON.parse(window.localStorage.user) : null;
+    window.currentUser = window.localStorage.user ? JSON.parse(window.localStorage.user) : null;
     if(!currentUser){
         $.post('http://localhost:3000/api/users',{
         },(user)=>{

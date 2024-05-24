@@ -1,8 +1,13 @@
 const route = require('express').Router();
-const {createNewPost,findAllPosts} = require('../../controllers/posts');
+const {createNewPost,findAllPosts,findPostsById} = require('../../controllers/posts');
 
 route.get('/',async (req,res)=>{
   const posts = await findAllPosts()
+  res.status(200).send(posts);
+})
+
+route.get('/:id',async (req,res)=>{
+  const posts = await findPostsById(req.params.id);
   res.status(200).send(posts);
 })
 
